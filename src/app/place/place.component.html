@@ -1,0 +1,98 @@
+<section>
+<br>
+<div [hidden]="submitted">
+  <div class="container">
+  <form [formGroup]="searchForm" (ngSubmit)="onSubmit()">
+      <div class="form-group row">
+        <label for="inlineFormInputName" class="col-sm-2 col-form-label">Username</label>
+        <div class="col-sm-10">
+          <input type="email" class="form-control" formControlName="username" placeholder="Username">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="inputPassword3" class="col-sm-2 col-form-label" >Password</label>
+        <div class="col-sm-10">
+          <input type="password" class="form-control" id="inputPassword3" formControlName="password" placeholder="Password">
+        </div>
+      </div>
+      <fieldset class="form-group">
+        <div class="row">
+          <legend class="col-form-label col-sm-2 pt-0">What do you want to look for?</legend>
+          <div class="col-sm-10">
+            <div class="form-check">
+              <input class="form-check-input" formControlName="tagradio" type="radio" name="gridRadios" value="placename" (click)="setradio('loc')" [checked]='true' ngModel>
+              <label class="form-check-label" for="gridRadios1">
+                Name
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" formControlName="placeradio" name="gridRadios" value="placeid" (click)="setradio('locid')" ngModel>
+              <label class="form-check-label" for="gridRadios2">
+                Place Id
+              </label>
+            </div>
+          </div>
+        </div>
+      </fieldset>
+      <div class="form-row">
+          <div class="col-md-6 mb-3">
+            <label for="validationCustom03">Parameter to find</label>
+            <input type="text" class="form-control" formControlName="object" id="validationCustom03" placeholder="Name or Place Id" required>
+            <div class="invalid-feedback">
+             Insert a valid parameter.
+            </div>
+          </div></div>
+      <div class="form-group row">
+        <div class="col-sm-10">
+          <button type="submit" class="btn btn-primary">Search</button>
+        </div>
+      </div>
+    </form>
+  </div>
+  </div>
+  
+  <div [hidden]="!submitted">
+   
+  <agm-map [zoom]= "5" style="height: 400px" [latitude]="41.909986" [longitude]="12.3959139">
+      <agm-marker>
+        <agm-marker *ngFor="let marker of markers" 
+        (markerClick)="clickedMarker(infowindow)"
+        [latitude]="marker.lat" [longitude]="marker.lng"
+        >
+        <agm-info-window #infowindow>
+              <strong>{{marker.label}}</strong>
+            </agm-info-window>
+      </agm-marker>
+      </agm-marker>
+      </agm-map>
+      <br>
+    
+      <div class="container">
+        <p> Results for {{obj}}</p>
+    
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Latitude</th>
+          <th scope="col">Longitude</th>
+          <th scope="col">Name</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row"><p *ngFor="let marker of markers; let i = index">{{i+1}}</p></th>
+          <td><p *ngFor="let marker of markers"> {{marker.lat}}</p></td>
+          <td><p *ngFor="let marker of markers"> {{marker.lng}}</p></td>
+          <td><p *ngFor="let marker of markers"> {{marker.label}}</p></td>
+        </tr>
+      </tbody>
+    </table>
+     <br>
+     
+      <button class="btn btn-primary" (click)="submitted=false">Indietro</button>
+      <br>
+      <br>
+    </div>
+    </div>
+  </section>
