@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { TagComponent } from './tag/tag.component';
 import { PlaceComponent } from './place/place.component';
 import { HomeComponent } from './home/home.component';
+import { FeedComponent } from './feed/feed.component';
 
 //routing 
 const routes: Routes = [
@@ -16,6 +17,10 @@ const routes: Routes = [
 {
   path:  'place',
   component: PlaceComponent
+},
+{
+  path: 'feed',
+  component: FeedComponent
 }
 ];
 
