@@ -61,8 +61,10 @@
       <div class="row">
         <div class="col">
             <div class="alert alert-dark" role="alert">
-                <a href="https://www.instagram.com/{{obj}}" class="alert-link">@{{obj}} </a>
-                <br> <p *ngFor="let marker of markers"> {{marker.bio}}</p> 
+               <div> <a href="https://www.instagram.com/{{obj}}" class="alert-link">@{{obj}} </a>  <p *ngFor="let marker of markers"> {{marker.name}}</p>
+               </div>
+                <p *ngFor="let marker of markers"> {{marker.bio}}</p> 
+                
               </div>
 
         </div>

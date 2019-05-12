@@ -42,7 +42,7 @@
       >
       <agm-info-window #infowindow>
             <p>Place: <strong>{{marker.label}}</strong></p>
-            <p>Username: <strong>{{marker.username}}</strong></p>
+            <p>Username: <strong><a href="https://www.instagram.com/{{marker.username}}" class="alert-link">{{marker.username}}</a></strong></p>
           </agm-info-window>
     </agm-marker>
     </agm-marker>
@@ -68,7 +68,7 @@
         <td><p *ngFor="let marker of markers"> {{marker.lat}}</p></td>
         <td><p *ngFor="let marker of markers"> {{marker.lng}}</p></td>
         <td><p *ngFor="let marker of markers"> {{marker.label}}</p></td>
-        <td><p *ngFor="let marker of markers"> {{marker.username}}</p></td>
+        <td><p *ngFor="let marker of markers"><a href="https://www.instagram.com/{{marker.username}}" class="alert-link">{{marker.username}}</a></p></td>
        
       </tr>
     </tbody>
